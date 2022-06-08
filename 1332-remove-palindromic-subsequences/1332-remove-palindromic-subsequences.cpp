@@ -2,17 +2,14 @@ class Solution {
 public:
     int removePalindromeSub(string s) 
     {
-        int front=0, end=s.size()-1;
+        int f=0, e=s.size()-1;
       
-        while(s[front]==s[end])
+        while(f<e)
         {
-            cout<<s[front]<<" "<<s[end]<<endl;
-            front++;
-            end--;
-            if(front>end) return 1;
+            if(s[f]!=s[e]) return 2;
+            f++;
+            e--;
         }
-        
-        return 2;
-        
+        return 1;
     }
 };
