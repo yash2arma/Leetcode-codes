@@ -16,35 +16,18 @@ public:
         
         while(true)
         {
-            if(root->val > p->val && root->val < q->val) 
-            {
-                LCA = root;
-                break;
-            }
-            
-            else if(root->val < p->val && root->val > q->val) 
-            {
-                LCA = root;
-                break;
-            }
-                
-            
-            else if(root->val==p->val)
-            {
-                LCA = root;
-                break;
-            }
-            else if(root->val==q->val)
-            {
-                LCA = root;
-                break;
-            }
-            
-            if(root->val > p->val)
+            int value = root->val;
+            if(value > p->val && value > q->val)
                 root = root->left;
-            else
+    
+            else if(value < p->val && value < q->val)
                 root = root->right;
             
+            else
+            {
+                LCA = root;
+                break;
+            } 
         }
         return LCA;
         
