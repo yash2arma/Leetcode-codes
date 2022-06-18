@@ -12,15 +12,13 @@ public:
             int wordsize = word.size();
             
             //storing all possible sequence of prefix and suffix of a word in the hashmap
-			string pre;
-            for(int j=0; j<wordsize; j++) //for preffix 
+            for(int j=1; j<=wordsize; j++) //for preffix 
             {
-                pre += word[j];
+                string pre = word.substr(0,j);
                 
-				string suff;
-                for(int k=wordsize-1; k>=0; k--) //for suffix
+                for(int k=0; k<wordsize; k++) //for suffix
                 {
-                    suff = word[k] + suff;
+                    string suff = word.substr(k, wordsize);
                     mp[pre + "|" + suff] = i+1; //set index i+1 for all possible sequence of a word
                     //we set i+1 to handle i=0 because by-default map initialized with 0 
                 }
@@ -34,3 +32,9 @@ public:
         return mp[s]-1; //if sequence found in hashmap we return its index
     }
 };
+
+/**
+ * Your WordFilter object will be instantiated and called as such:
+ * WordFilter* obj = new WordFilter(words);
+ * int param_1 = obj->f(prefix,suffix);
+ */
