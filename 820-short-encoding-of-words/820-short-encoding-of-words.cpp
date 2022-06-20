@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    static bool larger(string s1, string s2)
+    static bool larger(string &s1, string &s2)
     {
         return s1.length() > s2.length();
     }
