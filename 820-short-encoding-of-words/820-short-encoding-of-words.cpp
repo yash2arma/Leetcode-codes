@@ -80,8 +80,7 @@ public:
     {
         set<string> s(words.begin(), words.end());
         
-        
-        for(auto word: words)
+        for(auto &word: words)
         {
             cout<<word<<" ";
             for(int i=1; i<word.size(); i++)
