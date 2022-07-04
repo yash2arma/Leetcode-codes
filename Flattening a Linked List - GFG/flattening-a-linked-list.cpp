@@ -132,7 +132,7 @@ Node* mergesort(Node *a, Node* b)
     }
     
     if(a) temp->bottom = a;
-    else temp->bottom = b;
+    if(b) temp->bottom = b;
     
     return res->bottom;
 }
