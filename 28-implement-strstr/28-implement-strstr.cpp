@@ -5,10 +5,9 @@ public:
         int hs=haystack.size();
         int ns=needle.size();
         if(ns==0) return 0;
-        if(hs==0) return -1;
         int j=0;
         
-        for(int i=0; i<hs; i++)
+        for(int i=0; i<hs-ns+1; i++)
         {
             if(haystack[i]==needle[j])
             {
