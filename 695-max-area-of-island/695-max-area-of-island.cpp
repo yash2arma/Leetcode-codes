@@ -3,7 +3,7 @@ public:
     
     void help(int r, int c, int m, int n, vector<vector<int>>& grid, int &maxi_area, int &sum)
     {
-        if(r>=m || r<0 || c>=n || c<0 || grid[r][c]==-1 || grid[r][c]==0)
+        if(r>=m || r<0 || c>=n || c<0 || grid[r][c]==0 || grid[r][c]==-1)
             return;
         
         sum += grid[r][c];
@@ -26,8 +26,11 @@ public:
         {
             for(int j=0; j<n; j++)
             {
-                sum = 0;
-                help(i, j, m, n, grid, maxi_area, sum);
+                if(grid[i][j]==1)
+                {
+                    sum = 0;
+                    help(i, j, m, n, grid, maxi_area, sum);
+                }
             }
         }
         return maxi_area;
