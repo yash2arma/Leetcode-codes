@@ -7,7 +7,7 @@ public:
         {
             if(nums[z]==0)
             {
-                i=z;
+                i=z+1;
                 while(i<nums.size())
                 {
                     if(nums[i]!=0) break;
