@@ -46,22 +46,22 @@ public:
     {
         int e=nums1.size()-1;
         int s1=m-1, s2=n-1;
-        while(s1>=0 && s2>=0)
+        while(s1>=0 || s2>=0)
         {
-            if(nums1[s1] > nums2[s2])
+            if(s1>=0 && s2>=0)
+            {
+                if(nums1[s1] > nums2[s2])
+                    nums1[e--] = nums1[s1--];
+                else
+                    nums1[e--] = nums2[s2--];
+            }
+            
+            else if(s1>=0)
                 nums1[e--] = nums1[s1--];
+            
             else
                 nums1[e--] = nums2[s2--];
         }
-        
-        while(s1>=0)
-        {
-            nums1[e--] = nums1[s1--];
-        }
-        
-        while(s2>=0)
-        {
-            nums1[e--] = nums2[s2--];
-        }
+
     }
 };
