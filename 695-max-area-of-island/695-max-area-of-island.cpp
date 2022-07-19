@@ -1,9 +1,9 @@
 class Solution {
 public:
     
-    void help(int r, int c, int m, int n, vector<vector<int>>& grid, int &maxi_area, int &sum)
+    /*void help(int r, int c, int m, int n, vector<vector<int>>& grid, int &maxi_area, int &sum)
     {
-        if(r>=m || r<0 || c>=n || c<0 || grid[r][c]==0 || grid[r][c]==-1)
+        if(r>=m || r<0 || c>=n || c<0 || grid[r][c]<=0)
             return;
         
         sum += grid[r][c];
@@ -35,5 +35,32 @@ public:
         }
         return maxi_area;
         
+    }
+    */
+    
+    int maxAreaOfIsland(vector<vector<int>>& grid) 
+    {
+        int r=grid.size(), c=grid[0].size(), max_area=0;
+        
+        for(int i=0; i<r; i++)
+            for(int j=0; j<c; j++)
+                if(grid[i][j] == 1)
+                    max_area = max(max_area, get_area(grid, i, j));
+        return max_area;
+    }
+    
+    int get_area(vector<vector<int>> & grid, int i, int j)
+    {
+        if(i<0 || j<0 || i>= grid.size() || j>=grid[0].size() || grid[i][j] <= 0)
+            return 0;
+        
+        grid[i][j] = -1;
+        int leftarea = get_area(grid, i-1, j);
+        int rightarea = get_area(grid, i+1, j);
+        int toparea = get_area(grid, i, j-1);
+        int bottomarea = get_area(grid, i, j+1);
+        
+        int totalarea = leftarea+rightarea+toparea+bottomarea;
+        return 1+ totalarea;
     }
 };
