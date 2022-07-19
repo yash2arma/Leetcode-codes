@@ -11,8 +11,7 @@ public:
         
         for(auto it:ransomNote)
         {
-            mp[it-'a']--;
-            if(mp[it-'a'] < 0) return false;
+            if(--mp[it-'a'] < 0) return false;
         }
         return true;
     }
