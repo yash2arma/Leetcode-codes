@@ -6,13 +6,15 @@ public:
         
         map<char, int> mp;
         
-        for(auto it:t)
-            mp[it]++;
-        
-        for(auto it:s)
+        for(int i=0; i<t.size(); i++)
         {
-            mp[it]--;
-            if(mp.find(it)==mp.end() || mp[it]<0) return false;
+            mp[t[i]]++;
+            mp[s[i]]--;
+        }
+        
+        for(auto it:mp)
+        {
+            if(it.second) return false;
         }
         return true;
         
