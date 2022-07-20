@@ -18,6 +18,7 @@ public:
 
 class Solution {
 public:
+    /*
     Node* connect(Node* root)
     {
         if(!root) return root;
@@ -48,6 +49,30 @@ public:
                 }
             }
             prev->next = NULL;
+        }
+        return root;        
+    }*/
+    
+    Node* connect(Node* root)
+    {
+        if(!root) return root;
+        queue<Node*> q;
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            int sz = q.size();
+            Node* currRight = NULL;
+            for(int i=0; i<sz; i++)
+            {        
+                Node* node = q.front();
+                q.pop();
+
+                node->next = currRight;
+                currRight = node;
+                if(node->right) q.push(node->right);
+                if(node->left) q.push(node->left);
+            }
         }
         return root;        
     }
