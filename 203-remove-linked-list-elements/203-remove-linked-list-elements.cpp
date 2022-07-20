@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* removeElements(ListNode* head, int val) 
+    /*ListNode* removeElements(ListNode* head, int val) 
     {
         if(!head) return head;
         
@@ -31,6 +31,25 @@ public:
                 
         }
         return newhead->next;;
+        
+    }
+    */
+    ListNode* removeElements(ListNode* head, int val) 
+    {
+        if(!head) return head;
+        
+        ListNode* newhead = new ListNode(0);
+        newhead->next = head;
+        head = newhead;
+        
+        while(head && head->next)
+        {
+            if(head->next->val==val)
+                head->next = head->next->next;    
+            else
+                head = head->next;
+        }
+        return newhead->next;
         
     }
 };
