@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /*
     int findComplement(int num) 
     {
         if(num==1) return 0;
@@ -10,5 +11,11 @@ public:
         n -= 1;
         
         return n^num; 
+    }*/
+    int findComplement(int num) 
+    {
+        unsigned mask = ~0;
+        while (num & mask) mask <<= 1;
+        return ~mask & ~num;
     }
 };
