@@ -3,7 +3,7 @@ public:
     bool isUgly(int n) 
     {
         if(n<=0) return false;
-        while(n>=5)
+        while(n!=1)
         {
             if(n%2==0)
                 n /= 2;
@@ -15,6 +15,5 @@ public:
                 return false;
         }
         return true;
-        
     }
 };
