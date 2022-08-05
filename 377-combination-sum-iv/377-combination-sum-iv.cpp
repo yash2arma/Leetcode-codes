@@ -12,7 +12,8 @@ public:
         int count=0;
         for(int i=0; i<nums.size(); i++)
         {
-            count += help(i, nums, tar-nums[i], dp);
+            if(nums[i] <= tar)
+                count += help(i, nums, tar-nums[i], dp);
         }
         return dp[idx][tar] = count;
         
@@ -27,4 +28,5 @@ public:
         }
         return count;        
     }
+    
 };
