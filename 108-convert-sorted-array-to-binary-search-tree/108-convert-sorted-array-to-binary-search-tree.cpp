@@ -13,13 +13,13 @@ class Solution {
 public:
     TreeNode* makeBST(vector<int> &nums, int s, int e)
     {
-        if(s>=e) return NULL;
+        if(s>e) return NULL;
         
         int mid = s+(e-s)/2;
         
         TreeNode* root = new TreeNode(nums[mid]);
         
-        root->left = makeBST(nums, s, mid);
+        root->left = makeBST(nums, s, mid-1);
         root->right = makeBST(nums, mid+1, e);
         
         return root;
@@ -27,6 +27,6 @@ public:
     
     TreeNode* sortedArrayToBST(vector<int>& nums) 
     {
-        return makeBST(nums, 0, nums.size());
+        return makeBST(nums, 0, nums.size()-1);
     }
 };
