@@ -27,10 +27,17 @@ public:
                 if(mp[temp]==0)
                     break;
                 else
-                {
                     mp[temp]--;
-                    //else break;
+                
+                /*if(mp.count(temp)==0) //it checks whether temp is present or not
+                    break;
+                else
+                {
+                    if(mp[temp]!=0) mp[temp]--;
+                    else break;
                 }
+                */
+        
             }
             if(j==n)
                 res.push_back(i);
