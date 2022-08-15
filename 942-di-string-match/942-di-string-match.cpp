@@ -18,7 +18,7 @@ public:
                 l--;
             }
         }
-        ans.push_back(f);
+        ans.push_back(l);
         return ans;
     }
 };
