@@ -12,7 +12,7 @@ public:
                 ans.push_back(f);
                 f++;
             }
-            if(s[i]=='D')
+            else
             {
                 ans.push_back(l);
                 l--;
