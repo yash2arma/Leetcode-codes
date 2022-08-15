@@ -12,9 +12,9 @@ public:
             for(int j=1; j<=n-2; j++)
             {
                 int maxi=0;
-                maxi = max(maxi, max(grid[i-1][j-1], max(grid[i-1][j], grid[i-1][j+1])));
-                maxi = max(maxi, max(grid[i][j-1], max(grid[i][j], grid[i][j+1])));
-                maxi = max(maxi, max(grid[i+1][j-1], max(grid[i+1][j], grid[i+1][j+1])));
+                maxi = max({maxi, grid[i-1][j-1], grid[i-1][j], grid[i-1][j+1]});
+                maxi = max({maxi, grid[i][j-1], grid[i][j], grid[i][j+1]});
+                maxi = max({maxi, grid[i+1][j-1], grid[i+1][j], grid[i+1][j+1]});
                 
                res[i-1][j-1] = maxi;
             }
