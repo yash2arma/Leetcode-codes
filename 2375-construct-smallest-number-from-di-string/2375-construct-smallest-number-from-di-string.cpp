@@ -1,7 +1,7 @@
 class Solution 
 {
 public:
-    string smallestNumber(string pattern) 
+    /*string smallestNumber(string pattern) 
     {
         string res, st;
         
@@ -17,7 +17,27 @@ public:
                 }
             }
         }
-        return res;
+        return res; 
+    }
+    */
+    
+    string smallestNumber(string pattern) 
+    {
+        string res; 
+        stack<char> st;
         
+        for(int i=0; i<=pattern.size(); i++)
+        {
+            st.push('1'+i);
+            if(i==pattern.size() || pattern[i]=='I')
+            {
+                while(!st.empty())
+                {
+                    res.push_back(st.top());
+                    st.pop();
+                }
+            }
+        }
+        return res; 
     }
 };
