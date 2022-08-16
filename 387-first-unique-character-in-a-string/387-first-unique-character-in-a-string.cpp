@@ -18,7 +18,7 @@ public:
     
     int firstUniqChar(string s) 
     {
-        unordered_map<char, pair<int, int>> mp;
+        unordered_map<char, pair<int, int>> mp; //{letter, {count, index}}
         
         for(int i=0; i<s.size(); i++)
         {
