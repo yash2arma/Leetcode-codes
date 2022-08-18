@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
 public:
     int minSetSize(vector<int>& arr) 
     {
@@ -28,6 +28,32 @@ public:
             ans++;
             if(m <= n/2)
                 break;
+        }
+        return ans;
+    }
+};
+*/
+
+
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) 
+    {
+        int n=arr.size();
+        unordered_map<int, int> mp;
+        priority_queue<int> pq;
+        
+        for(auto &it:arr) mp[it]++;
+        for(auto &it:mp) pq.push(it.second);
+        
+        int cnt=0;
+        int ans=0;
+        while(2*cnt < n)
+        {
+            ans++;
+            int t = pq.top();
+            pq.pop();
+            cnt += t;
         }
         return ans;
     }
