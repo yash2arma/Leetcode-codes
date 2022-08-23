@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+/*
 class Solution {
 public:
     bool isPalindrome(ListNode* head) 
@@ -43,5 +45,23 @@ public:
         }
         return true;       
 
+    }
+};
+*/
+
+class Solution {
+public:
+    ListNode* temp;
+    bool check(ListNode* head)
+    {
+        if(head==NULL) return true;
+        bool res = check(head->next) && (head->val==temp->val);
+        temp = temp->next;
+        return res;
+    }
+    bool isPalindrome(ListNode* head) 
+    {
+        temp=head;
+        return check(head);
     }
 };
