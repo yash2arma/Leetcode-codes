@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string shiftingLetters(string s, vector<int>& shifts) 
+    /*string shiftingLetters(string s, vector<int>& shifts) 
     {
         int count=0;
         int n=shifts.size();
@@ -18,6 +18,22 @@ public:
             c = 'a' + (26 + (s[i]-'a') + shifts[i])%26;
             s[i] = c;
         }
+        return s;
+        
+    }
+    */
+    
+    string shiftingLetters(string s, vector<int>& shifts) 
+    {
+        int n=shifts.size();
+        int shift=0;
+
+        for(int i=n-1; i>=0; i--)
+        {
+            shift = (shift+shifts[i])%26;
+            s[i] = (s[i]-'a'+shift)%26 + 'a';
+        }
+
         return s;
         
     }
