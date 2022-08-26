@@ -6,12 +6,12 @@ public:
         string s = to_string(n);
         sort(s.begin(), s.end());
         
-        vector<string> power;
+        vector<string> power(31);
         int num;
         for(int i=0; i<=30; i++)
         {
             num = pow(2,i);
-            power.push_back(to_string(num));
+            power[i] = to_string(num);
         }
         
         for(int i=0; i<=30; i++)
