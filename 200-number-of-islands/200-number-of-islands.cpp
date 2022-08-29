@@ -1,23 +1,39 @@
 class Solution 
 {
-public:
+public:  
     
-    void help(int i, int j, vector<vector<char>> &grid)
+    int dir[5]={-1,0,1,0,-1};
+    void bfs(int i, int j, vector<vector<char>>& grid)
     {
-        if(i>=grid.size() || j>=grid[0].size() || i<0 || j<0 || grid[i][j]=='0' || grid[i][j]=='2') return;
+        queue<pair<int, int>> q;
+        grid[i][j]='0';
+        q.push({i, j});
         
-        grid[i][j]='2';
-        help(i, j-1, grid);
-        help(i, j+1, grid);
-        help(i-1, j, grid);
-        help(i+1, j, grid);
+        while(!q.empty())
+        {
+            auto cell = q.front(); 
+            q.pop();
+            int r=cell.first;
+            int c=cell.second;
+            
+            for(int i=0; i<4; i++)
+            {
+                int x=r+dir[i];
+                int y=c+dir[i+1];
+                if(x>=0 && y>=0 && x<grid.size() && y<grid[0].size() && grid[x][y]=='1')
+                {
+                    grid[x][y]='0';
+                    q.push({x, y});
+                }
+                    
+            }
+        }
     }
     
     int numIslands(vector<vector<char>>& grid) 
     {
         int count=0;
         int r=grid.size(), c=grid[0].size();
-        
         for(int i=0; i<r; i++)
         {
             for(int j=0; j<c; j++)
@@ -25,7 +41,7 @@ public:
                 if(grid[i][j]=='1')
                 {
                     count++;
-                    help(i, j, grid);
+                    bfs(i, j, grid);
                 }
             }
         }
