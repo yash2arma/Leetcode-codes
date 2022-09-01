@@ -12,8 +12,7 @@
 class Solution 
 {
 public:
-    
-    void f(TreeNode* node, int &count, int maxi)
+    void dfs(TreeNode* node, int &count, int maxi)
     {
         if(!node) return;
         if(node->val >= maxi)
@@ -22,17 +21,14 @@ public:
             count++;
         }
         
-        f(node->left, count, maxi);
-        f(node->right, count, maxi);
+        dfs(node->left, count, maxi);
+        dfs(node->right, count, maxi);
     }
     
     int goodNodes(TreeNode* root) 
     {
-        int count=1;
-        int maxi=root->val;
-        f(root->left, count, maxi);
-        f(root->right, count, maxi);
-        
+        int count=0;
+        dfs(root, count, INT_MIN);
         return count;
     }
 };
