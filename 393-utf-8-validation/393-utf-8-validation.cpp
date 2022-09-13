@@ -3,25 +3,24 @@ class Solution
 public:
     bool validUtf8(vector<int>& data) 
     {
-        int count=0;
-        
-        for(auto c : data)
+        int cnt=0;
+        for(auto it : data)
         {
-            if(count==0)
+            if(cnt==0)
             {
-                if((c>>5) == 0b110) count=1;
-                else if((c>>4) == 0b1110) count=2;
-                else if((c>>3) == 0b11110) count=3;
-                else if((c>>7)) return false;
+                if((it>>5) == 0b110) cnt=1;
+                else if((it>>4) == 0b1110) cnt=2;
+                else if((it>>3) == 0b11110) cnt=3;
+                else if((it>>7)) return false;
             }
             
             else
             {
-                if(c>>6 != 0b10) return false;
-                count--;
+                if(it>>6 != 0b10) return false;
+                cnt--;
             }
             
         }
-        return count==0;
+        return cnt==0;
     }
 };
