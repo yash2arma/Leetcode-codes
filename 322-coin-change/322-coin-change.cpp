@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /*
     //It is just like Unbounded knapsack problem
     int coinChange(vector<int>& coins, int amount) 
     {
@@ -33,5 +34,36 @@ public:
             }
         }
         return dp[n][amount]>1e5-1 ? -1 : dp[n][amount];           
+    }
+    */
+    
+    int coinChange(vector<int>& coins, int amount) 
+    {
+        int n = coins.size(); 
+        vector<vector<int>> dp(n, vector<int> (amount+1, 0));
+        
+        for(int i=0; i<= amount; i++)
+        {
+            if(i%coins[0]==0) dp[0][i] = i/coins[0];
+            else dp[0][i] = 1e5;
+        }
+        
+        for(int i=1; i<n; i++)
+        {
+            for(int k=0; k<=amount; k++)
+            {
+                int not_pick = 0+dp[i-1][k];
+                int pick = 1e5;
+                if(coins[i] <= k)
+                {
+                    pick = 1 + dp[i][k-coins[i]];
+                }
+                
+                dp[i][k] = min(pick, not_pick);
+            }
+        }
+        
+        
+        return dp[n-1][amount]>1e5-1 ? -1 : dp[n-1][amount];           
     }
 };
