@@ -1,52 +1,34 @@
-// class LUPrefix {
-// public:
-    
-//     vector<int> pre;
-//     int val=0;
-    
-//     LUPrefix(int n) 
-//     {
-//         pre.resize(n+2, 0);
-//     }
-    
-//     void upload(int video) 
-//     {
-//         pre[video] = 1;
-        
-//     }
-    
-//     int longest() 
-//     {
-//         while(pre[val+1]==1)
-//                 val++;
-        
-//         return val;
-//     }
-// };
-
-// /**
-//  * Your LUPrefix object will be instantiated and called as such:
-//  * LUPrefix* obj = new LUPrefix(n);
-//  * obj->upload(video);
-//  * int param_2 = obj->longest();
-//  */
-
-
 class LUPrefix {
-   public:
-    set<int> s;
-    int t = 0;
-    LUPrefix(int n) {
+public:
+    
+    vector<int> pre;
+    int val=0;
+    
+    LUPrefix(int n) 
+    {
+        pre.resize(n+2, 0);
     }
-
-    void upload(int video) {
-        s.emplace(video);
+    
+    void upload(int video) 
+    {
+        pre[video] = 1;
+        
     }
-
-    int longest() {
-        while (s.count(t + 1)) {
-            t++;
-        }
-        return t;
+    
+    int longest() 
+    {
+        while(pre[val+1]==1)
+                val++;
+        
+        return val;
     }
 };
+
+/**
+ * Your LUPrefix object will be instantiated and called as such:
+ * LUPrefix* obj = new LUPrefix(n);
+ * obj->upload(video);
+ * int param_2 = obj->longest();
+ */
+
+
