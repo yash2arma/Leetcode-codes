@@ -74,7 +74,7 @@ public:
             {
                 if(mp[i]==0) continue;
                 
-                if(fl==0)  //storing fre 1st time in cnt
+                if(fl==0)  //storing frequency of 1st char in cnt
                 {
                     cnt = mp[i];
                     fl=1;
@@ -82,7 +82,7 @@ public:
                 
                 if(mp[i]!=cnt) 
                 {
-                    fl2=1;
+                    fl2=1; 
                     break;
                 }
             }
