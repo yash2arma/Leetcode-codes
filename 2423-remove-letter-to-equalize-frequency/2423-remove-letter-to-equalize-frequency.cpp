@@ -57,11 +57,8 @@ public:
         vector<int> mp(26, 0); 
         
         for(auto it:word) //storing frequency
-        {
             mp[it-'a']++;
-        }
-            
-        
+
         for(int i=0; i<26; i++) 
         {
             if(mp[i]==0) continue;  //if no char available then check for next char
@@ -88,9 +85,7 @@ public:
             }
             if(fl2==0) return true; 
             
-            mp[i]++; //again restoring frequency of char in mp 
-            
-            
+            mp[i]++; //restoring frequency of char in mp 
         }
         return false;
     }
