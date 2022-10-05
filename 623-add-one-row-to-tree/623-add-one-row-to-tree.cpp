@@ -26,7 +26,7 @@ public:
         q.push(root);
         depth--;
         
-        while(!q.empty() || depth!=0)
+        while(!q.empty())
         {
             depth--;
             int sz = q.size();
