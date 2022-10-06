@@ -2,7 +2,7 @@ class TimeMap
 {
 public:
     
-    map<string, map<int, string>> store;
+    unordered_map<string, map<int, string>> store;
     
     TimeMap() 
     {
