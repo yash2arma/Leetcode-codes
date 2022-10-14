@@ -25,6 +25,7 @@ public:
     */
     
     //2. Tabulation
+    /*
     int numDistinct(string s, string t) 
     {
         int m=s.size(), n=t.size();
@@ -44,5 +45,28 @@ public:
             }
         }
         return (int)dp[m][n];
+    }
+    */
+    
+    //3. Space Optimization 2d
+    int numDistinct(string s, string t) 
+    {
+        int m=s.size(), n=t.size();
+        vector<double> pre(n+1, 0), cur(n+1, 0);
+        
+        pre[0]=cur[0]=1;
+        
+        for(int i=1; i<=m; i++)
+        {
+            for(int j=1; j<=n; j++)
+            {
+                if(s[i-1]==t[j-1])
+                    cur[j] = pre[j-1] + pre[j];
+                else
+                    cur[j] = pre[j];
+            }
+            pre = cur;
+        }
+        return (int)pre[n];
     }
 };
