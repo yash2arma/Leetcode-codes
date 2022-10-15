@@ -67,6 +67,7 @@ public:
     */
     
     //2. Tabulation
+    /*
     bool isMatch(string s, string p) 
     {
         int n=s.size(), m=p.size();
@@ -108,6 +109,52 @@ public:
             
         }
         return dp[m][n];
+    }
+    */
+    
+    //3. Space Optimization
+    bool isMatch(string s, string p) 
+    {
+        int n=s.size(), m=p.size();
+        vector<bool> pre(n+1, false), cur(n+1, false);
+        
+        pre[0]=true;
+        
+        for(int j=1; j<=n; j++)
+            pre[j] = false;
+        
+        
+        for(int i=1; i<=m; i++)
+        {
+            //Since in tabulation, we update 1st column of each row
+            //here, we update 0th index of cur
+            int flag = true;
+            for(int ii=1; ii<=i; ii++)
+            {
+                if(p[ii-1] != '*') 
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            cur[0] = flag;
+            
+            for(int j=1; j<=n; j++)
+            {
+                 
+                if(p[i-1]==s[j-1] || p[i-1]=='?')
+                    cur[j] = pre[j-1];
+
+                else if(p[i-1]=='*')
+                    cur[j] = pre[j] | cur[j-1];
+                else
+                    cur[j] = false;
+        
+            }
+            pre = cur;
+            
+        }
+        return pre[n];
     }
     
 };
