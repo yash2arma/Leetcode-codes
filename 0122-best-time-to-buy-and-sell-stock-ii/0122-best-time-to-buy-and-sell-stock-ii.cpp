@@ -59,7 +59,8 @@ public:
     }
     */
     
-    //3. Space Optimization
+    //3. Space Optimization - 1d vector
+    /*
     int maxProfit(vector<int>& prices) 
     {
         int n=prices.size();
@@ -84,5 +85,24 @@ public:
             after = cur;
         }
         return after[1];
+    }
+    */
+    
+    //4. Space Optimization - 4 variable
+    int maxProfit(vector<int>& prices) 
+    {
+        int n=prices.size(), aheadBuy=0, aheadNotBuy=0, curBuy, curNotBuy;
+        
+        for(int i=n-1; i>=0; i--)
+        {
+            curBuy = max(-prices[i] + aheadNotBuy, 0 + aheadBuy);
+
+            curNotBuy = max(prices[i] + aheadBuy, 0 + aheadNotBuy);
+
+            aheadBuy = curBuy;
+            aheadNotBuy = curNotBuy;
+                
+        }
+        return aheadBuy;
     }
 };
