@@ -30,7 +30,8 @@ public:
     }
     */
     
-    //2. Tabulation
+    //2. Tabulation 
+    /*
     int maxProfit(vector<int>& prices) 
     {
         int n=prices.size();
@@ -55,5 +56,33 @@ public:
             }
         }
         return dp[0][1];
+    }
+    */
+    
+    //3. Space Optimization
+    int maxProfit(vector<int>& prices) 
+    {
+        int n=prices.size();
+        vector<int> cur(2, 0), after(2, 0);
+        
+        for(int i=n-1; i>=0; i--)
+        {
+            for(int buy=0; buy <= 1; buy++)
+            {
+                int profit=0;
+                if(buy) //buying stock
+                {
+                    profit = max(-prices[i] + after[0], 0 + after[1]);
+
+                }
+                else //selling stock
+                {
+                    profit = max(prices[i] + after[1], 0 + after[0]);
+                }
+                cur[buy] = profit;
+            }
+            after = cur;
+        }
+        return after[1];
     }
 };
