@@ -19,6 +19,7 @@ public:
     }
     */
     
+    /*
     int maximum69Number (int num) 
     {
         int maxi=num;
@@ -34,7 +35,6 @@ public:
             {
                 x = pow(10, p)*9 + temp;
                 new_n = num*pow(10, p+1) + x;
-                //cout<<new_n<<" ";
                 maxi = max(maxi, new_n);
             }
             
@@ -46,4 +46,24 @@ public:
         
         return maxi;
     }
+    */
+    int maximum69Number (int num) 
+    {
+        int last_dig=-1, dig_cnt=0, temp=num;
+        
+        
+        while(temp)
+        {
+            if(temp%10==6)
+                last_dig = dig_cnt;
+            
+            dig_cnt++;
+            temp /= 10;
+        }
+        
+        if(last_dig==-1) return num;
+        
+        return num + pow(10, last_dig)*3;
+    }
+        
 };
