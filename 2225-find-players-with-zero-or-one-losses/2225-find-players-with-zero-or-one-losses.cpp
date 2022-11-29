@@ -20,7 +20,7 @@ public:
         
         vector<int> one_lost;
         
-        //find losers who lost exact one match and put them into one_lost
+        //find players who lost exact one match and put them into one_lost
         for(auto it:losers)  //we can also use &[x,cnt]
         {
             if(it.second==1)
