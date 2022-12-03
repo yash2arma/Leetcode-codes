@@ -39,8 +39,7 @@ public:
             int n=pq.top().first;
             char c=pq.top().second;
             pq.pop();
-            string temp(n, c);
-            res += temp;
+            res.append(n, c);
         }
         return res;
     }
